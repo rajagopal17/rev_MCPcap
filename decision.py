@@ -74,6 +74,15 @@ def generate_plan(input_data: GeneratePlanInput) -> GeneratePlanOutput:
     return GeneratePlanOutput(output=response_text)
 
 #example usage
+if __name__ == "__main__":
+    output = generate_plan(GeneratePlanInput(
+        perception=PerceptionOutput(user_input="What is 10 added to 20", user_intent="math_query", entities=["10", "20"]),
+        tool_descriptions="add"
+    ))
+    print(output.output)
+
+
+
 
 
 
