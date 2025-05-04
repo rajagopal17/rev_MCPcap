@@ -88,39 +88,17 @@ async def main(user_input: str):
                     print(f"[agent] Error encountered: {error_message}")
                     break
 
-
+          
              
-
-
-
-
-
-
-        
-
-    
- 
-
-
-        
-        
-
-
-                   
-                    
-           
-                     
-
-                    
-
-
-
-
-                            
 # Example usage
 if __name__ == "__main__":
-    user_input = input("What is 10 added to 42?")
-    asyncio.run(main(user_input))
+    user_input = input("what do you want to solve today?")
+    asyncio.run(main(user_input))                
+       
+                                    
+
+                            
+
 #
 
 
