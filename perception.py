@@ -11,7 +11,7 @@ load_dotenv()
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 model = genai.GenerativeModel('gemini-2.0-flash')
 
-def extract_intent(input_data: PerceptionInput) -> PerceptionOutput:
+def extract_intent(put_data: PerceptionInput) -> PerceptionOutput:
     """Extract user intent and entities from the input query using llm model.
         Args:
             input_data (PerceptionInput): The input data containing user query. 
@@ -28,7 +28,7 @@ def extract_intent(input_data: PerceptionInput) -> PerceptionOutput:
         some examples: [travel_related_query, weather_query, query_related_to_physics, query_related_to_diets etc.]
         entities: list of entities in the query : example: ['Australia','AI','physics','capital']        
 
-        Query: {input_data.user_input}
+        Query: {put_data.user_input}
         """
     response = model.generate_content(prompt)
     response_text = response.text.strip()
@@ -46,21 +46,13 @@ def extract_intent(input_data: PerceptionInput) -> PerceptionOutput:
         user_intent = None
         entities = None
     return PerceptionOutput(
-        user_input=input_data.user_input,
+        user_input=put_data.user_input,
         user_intent=user_intent,
         entities=entities
         ) 
 
 
-# Example usage
-if __name__ == "__main__":
-    # Example input data
-    data = PerceptionInput(user_input="What is the capital of Australia?")
-    output_data = extract_intent(input_data=data)
 
-    
-    # Print the output data
-    print(output_data)
     
 
 
